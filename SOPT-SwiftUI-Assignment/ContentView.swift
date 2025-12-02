@@ -15,7 +15,6 @@ struct ContentView: View {
             .padding([.horizontal], 16)
             .padding([.top], 4)
         EventPromotionView()
-            .padding([.horizontal], 16)
             .padding([.top], 24)
         Spacer()
     }
@@ -76,12 +75,29 @@ struct SearchBar: View {
 
 struct EventPromotionView: View {
     var body: some View {
-        HStack {
-            VStack {
-                Text("Hello, World!")
-                Text("Hello, World!")
+        ZStack {
+            Rectangle()
+                .foregroundStyle(
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color(.white), Color(.baeminMint100)]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+            .frame(width: .infinity, height: 100)
+            HStack {
+                VStack(alignment: .leading) {
+                    Image(.bmart)
+                    HStack {
+                        Text("전상품 쿠폰팩 + 60%특가")
+                            .font(Font.pretendard(.bold_16))
+                        Image(.rightArrow)
+                    }
+                }
+                Spacer()
             }
-            Spacer()
+            .padding([.top], -20)
+            .padding([.horizontal], 16)
         }
     }
 }
