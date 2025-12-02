@@ -9,13 +9,43 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationBar()
+            .padding([.leading, .trailing], 16)
+        Spacer()
+    }
+}
+
+struct NavigationBar: View {
+    var body: some View {
+        HStack {
+            Button {
+                print("Location Tapped")
+            } label: {
+                Text("우리집")
+                    .font(Font.pretendard(.bold_16))
+            }
+            .tint(Color(.black))
+            Image(uiImage: .plygon)
+            
+            
+            Spacer()
+            Button {
+                print("divider Tapped")
+            } label: {
+                Image(uiImage: .divider)
+            }
+            Button {
+                print("divider Tapped")
+            } label: {
+                Image(uiImage: .notification)
+            }
+            Button {
+                print("divider Tapped")
+            } label: {
+                Image(uiImage: .cart)
+            }
         }
-        .padding()
+        .frame(height: 24)
     }
 }
 
