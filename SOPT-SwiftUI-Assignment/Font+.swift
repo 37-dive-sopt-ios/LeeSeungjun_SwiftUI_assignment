@@ -12,6 +12,7 @@ extension Font {
     enum PretendardStyle {
         case bold_16
         case bold_18
+        case m_16
         case title_b_24
         case heading_b_20
         case body_sb_16
@@ -34,6 +35,7 @@ extension Font.PretendardStyle {
     
     var size: CGFloat {
         switch self {
+        case .m_16: return 16
         case .bold_16: return 16
         case .bold_18: return 18
         case .title_b_24: return 24
@@ -52,7 +54,7 @@ extension Font.PretendardStyle {
             return "Pretendard-Bold"
         case .body_sb_16, .caption_sb_8:
             return "Pretendard-SemiBold"
-        case .body_m_14, .caption_m_12, .caption_m_10:
+        case .m_16, .body_m_14, .caption_m_12, .caption_m_10:
             return "Pretendard-Medium"
         case .body_r_14, .caption_r_12:
             return "Pretendard-Regular"

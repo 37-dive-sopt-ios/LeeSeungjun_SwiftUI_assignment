@@ -9,16 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationBar()
-            .padding([.horizontal], 16)
-        SearchBar()
-            .padding([.horizontal], 16)
-            .padding([.top], 4)
-        EventPromotionView()
-            .padding([.top], 24)
-        CategoryTabView()
-            .padding([.top], -30)
-        Spacer()
+        ScrollView {
+            NavigationBar()
+                .padding([.horizontal], 16)
+            SearchBar()
+                .padding([.horizontal], 16)
+                .padding([.top], 4)
+            EventPromotionView()
+                .padding([.top], 24)
+            CategoryTabView()
+                .padding([.top], -30)
+            Divider()
+            CategoryScrollView()
+            Rectangle()
+                .frame(height: 10)
+                .foregroundStyle(.baeminBackgroundWhite)
+            Spacer()
+        }
+        .background(.baeminBackgroundWhite)
     }
 }
 
@@ -81,7 +89,7 @@ struct EventPromotionView: View {
             Rectangle()
                 .foregroundStyle(
                     LinearGradient(
-                        gradient: Gradient(colors: [Color(.white), Color(.baeminMint100)]),
+                        gradient: Gradient(colors: [Color(.baeminBackgroundWhite), Color(.baeminMint100)]),
                         startPoint: .top,
                         endPoint: .bottom
                     )
@@ -113,7 +121,7 @@ struct CategoryTabView: View {
                         
                     } label: {
                         Text("\(data.name)")
-                            .font(Font.pretendard(.bold_16))
+                            .font(Font.pretendard(.bold_18))
                             .tint(.gray)
                             .padding([.horizontal], 7)
                     }
@@ -129,61 +137,90 @@ struct CategoryTabView: View {
     
 }
 
-struct CustomSegmentedPickerView: View {
-  @State private var selectedIndex = 0
-  private var titles = ["Round Trip", "One Way", "Multi-City"]
-  private var colors = [Color.red, Color.green, Color.blue]
-  @State private var frames = Array<CGRect>(repeating: .zero, count: 3)
-
-  var body: some View {
-    VStack {
-      ZStack {
-        HStack(spacing: 10) {
-          ForEach(self.titles.indices, id: \.self) { index in
-            Button(action: { self.selectedIndex = index }) {
-              Text(self.titles[index])
-            }.padding(EdgeInsets(top: 16, leading: 20, bottom: 16, trailing: 20)).background(
-              GeometryReader { geo in
-                Color.clear.onAppear { self.setFrame(index: index, frame: geo.frame(in: .global)) }
-              }
-            )
-          }
+struct CategoryScrollView: View {
+    var body: some View {
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 0) {
+                ForEach(CategoryData.data, id:\.name) { data in
+                    CategorySetCell(data: data)
+                }
+            }
         }
-        .background(
-          Capsule().fill(
-            self.colors[self.selectedIndex].opacity(0.4))
-            .frame(width: self.frames[self.selectedIndex].width,
-                   height: self.frames[self.selectedIndex].height, alignment: .topLeading)
-            .offset(x: self.frames[self.selectedIndex].minX - self.frames[0].minX)
-          , alignment: .leading
-        )
-      }
-      .animation(Animation.easeInOut(duration: 0.3))
-      .background(Capsule().stroke(Color.gray, lineWidth: 3))
-        
-      Picker(selection: self.$selectedIndex, label: Text("What is your favorite color?")) {
-        ForEach(0..<self.titles.count) { index in
-          Text(self.titles[index]).tag(index)
-        }
-      }.pickerStyle(SegmentedPickerStyle())
-
-      Text("Value: \(self.titles[self.selectedIndex])")
-      Spacer()
+        .scrollIndicators(.hidden)
+        .scrollTargetBehavior(.paging)
     }
-  }
-
-  func setFrame(index: Int, frame: CGRect) {
-    self.frames[index] = frame
-  }
 }
 
-
-struct CustomSegmentedPickerView_Previews: PreviewProvider {
-  static var previews: some View {
-    CustomSegmentedPickerView()
-  }
+struct CategorySetCell: View {
+    
+    var data: CategoryData
+    
+    var body: some View {
+        VStack {
+            Grid(
+                alignment: .center,
+                horizontalSpacing: 12,
+                verticalSpacing: 12,
+            ) {
+                GridRow {
+                    ForEach([
+                        CategoryCellData(image: .oneBowl, name: "한그릇"),
+                        CategoryCellData(image: .chicken, name: "치킨"),
+                        CategoryCellData(image: .cafeDesert, name: "카페·디저트"),
+                        CategoryCellData(image: .pizza, name: "피자"),
+                        CategoryCellData(image: .snackFood, name: "분식")]) { data in
+                            CategoryCell(data: data)
+                        }
+                }
+                GridRow {
+                    ForEach([
+                        CategoryCellData(image: .meat, name: "고기"),
+                        CategoryCellData(image: .soup, name: "찜·탕"),
+                        CategoryCellData(image: .lateFood, name: "야식"),
+                        CategoryCellData(image: .fastfood, name: "패스트푸드"),
+                        CategoryCellData(image: .pickUp, name: "픽업")]) { data in
+                            CategoryCell(data: data)
+                        }
+                }
+            }
+            .padding([.vertical], 10)
+            .padding([.horizontal], 16)
+            Divider()
+            Button {
+                
+            } label: {
+                HStack(spacing: 0) {
+                    Text("음식배달")
+                        .font(Font.pretendard(.body_b_14))
+                    Text("에서 더보기")
+                        .font(Font.pretendard(.body_m_14))
+                    Image(.rightArrow)
+                        .frame(width: 20)
+                }
+                .tint(.black)
+            }
+        }
+        .background(.white)
+        .frame(width: UIScreen.main.bounds.width)
+    }
 }
 
+struct CategoryCell: View {
+    
+    var data: CategoryCellData
+    
+    var body: some View {
+        VStack {
+            Image(uiImage: data.image)
+                .resizable()
+                .cornerRadius(20)
+                .frame(width: 58, height: 58)
+            Text(data.name)
+                .font(Font.pretendard(.body_r_14))
+        }
+        .frame(width: 62, height: 78)
+    }
+}
 
 #Preview {
     ContentView()
@@ -215,7 +252,14 @@ struct CategoryData: Identifiable {
     ]
 }
 
-struct CategoryCellData {
+struct CategoryCellData: Identifiable {
+    var id: String
     var image = UIImage()
     var name: String
+    
+    init(image: UIImage, name: String) {
+        self.id = name
+        self.name = name
+        self.image = image
+    }
 }
