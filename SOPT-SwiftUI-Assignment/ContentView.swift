@@ -19,12 +19,11 @@ struct ContentView: View {
                 .padding([.top], 24)
             CategoryTabView()
                 .padding([.top], -30)
-            Divider()
             CategoryScrollView()
-            Rectangle()
-                .frame(height: 10)
-                .foregroundStyle(.baeminBackgroundWhite)
             MartketcrollView()
+                .padding([.top], 10)
+            BannerScrollView()
+                .padding([.top], 10)
             Spacer()
         }
         .background(.baeminBackgroundWhite)
@@ -135,7 +134,6 @@ struct CategoryTabView: View {
         .cornerRadius(10)
         .shadow(color: .baeminMint300, radius: 4, x: 0, y: -6)
     }
-    
 }
 
 struct CategoryScrollView: View {
@@ -198,8 +196,13 @@ struct CategorySetCell: View {
                     Image(.rightArrow)
                         .frame(width: 20)
                 }
+                .frame(height: 26)
                 .tint(.black)
             }
+            Rectangle()
+                .foregroundStyle(.white)
+                .frame(height: 2)
+                .frame(width: UIScreen.main.bounds.width)
         }
         .background(.white)
         .frame(width: UIScreen.main.bounds.width)
@@ -255,12 +258,41 @@ struct MartketcrollView: View {
             }
             .padding([.horizontal], 16)
         }
+        .padding([.vertical], 11)
         .background(Color(.white))
+    }
+}
+
+struct BannerScrollView: View {
+    var body: some View {
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 0) {
+                ForEach(BannerData.data, id: \.image) { data in
+                    Image(uiImage: data.image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: UIScreen.main.bounds.width)
+                        .frame(height: 114)
+                }
+            }
+        }
+        .scrollIndicators(.hidden)
+        .scrollTargetBehavior(.paging)
     }
 }
 
 #Preview {
     ContentView()
+}
+
+struct BannerData {
+    var image: UIImage
+    
+    static let data: [BannerData] = [
+        BannerData(image: .banner01),
+        BannerData(image: .banner02),
+        BannerData(image: .banner03),
+    ]
 }
 
 struct CategoryData: Identifiable {
