@@ -20,6 +20,7 @@ struct ContentView: View {
             CategoryTabView()
                 .padding([.top], -30)
             CategoryScrollView()
+                .padding([.top], -10)
             MartketcrollView()
                 .padding([.top], 5)
             BannerScrollView()
