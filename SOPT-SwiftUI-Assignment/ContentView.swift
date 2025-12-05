@@ -21,9 +21,10 @@ struct ContentView: View {
                 .padding([.top], -30)
             CategoryScrollView()
             MartketcrollView()
-                .padding([.top], 10)
+                .padding([.top], 5)
             BannerScrollView()
-                .padding([.top], 10)
+                .padding([.top], 5)
+            RankScrollView()
             Spacer()
         }
         .background(.baeminBackgroundWhite)

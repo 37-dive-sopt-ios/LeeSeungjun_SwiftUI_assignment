@@ -13,6 +13,7 @@ extension Font {
         case bold_16
         case bold_18
         case m_16
+        case sb_18
         case title_b_24
         case heading_b_20
         case body_sb_16
@@ -36,6 +37,7 @@ extension Font.PretendardStyle {
     var size: CGFloat {
         switch self {
         case .m_16: return 16
+        case .sb_18: return 18
         case .bold_16: return 16
         case .bold_18: return 18
         case .title_b_24: return 24
@@ -52,7 +54,7 @@ extension Font.PretendardStyle {
         switch self {
         case .bold_16, .bold_18, .title_b_24, .heading_b_20, .body_b_14:
             return "Pretendard-Bold"
-        case .body_sb_16, .caption_sb_8:
+        case .body_sb_16, .caption_sb_8, .sb_18:
             return "Pretendard-SemiBold"
         case .m_16, .body_m_14, .caption_m_12, .caption_m_10:
             return "Pretendard-Medium"
