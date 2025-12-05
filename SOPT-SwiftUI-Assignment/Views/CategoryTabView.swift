@@ -36,7 +36,7 @@ struct CategoryTabView: View {
         }
         .frame(height: 48)
         .background(.white)
-        .cornerRadius(10)
+        .cornerRadius(10, corners: [.topLeft, .topRight])
         .shadow(color: .baeminMint300, radius: 4, x: 0, y: -6)
     }
 }
