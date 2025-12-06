@@ -37,7 +37,3 @@ struct CategoryTabView: View {
         .shadow(color: .baeminMint300, radius: 4, x: 0, y: -6)
     }
 }
-
-#Preview {
-    ContentView()
-}

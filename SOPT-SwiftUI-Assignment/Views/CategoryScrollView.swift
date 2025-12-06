@@ -37,7 +37,3 @@ struct CategoryScrollView: View {
         .background(.white)
     }
 }
-
-#Preview {
-    ContentView()
-}

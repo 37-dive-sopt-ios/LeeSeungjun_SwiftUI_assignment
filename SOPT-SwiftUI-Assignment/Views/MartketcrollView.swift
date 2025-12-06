@@ -25,7 +25,3 @@ struct MartketcrollView: View {
         .background(Color(.white))
     }
 }
-
-#Preview {
-    ContentView()
-}
