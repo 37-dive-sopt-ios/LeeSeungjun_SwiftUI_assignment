@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var selectedIndex: Int = 0
+    
     var body: some View {
         ScrollView {
             NavigationBar()
@@ -17,9 +20,9 @@ struct ContentView: View {
                 .padding([.top], 4)
             EventPromotionView()
                 .padding([.top], 24)
-            CategoryTabView()
+            CategoryTabView(selectedIndex: $selectedIndex)
                 .padding([.top], -30)
-            CategoryScrollView()
+            CategoryScrollView(selectedIndex: $selectedIndex)
                 .padding([.top], -7)
             MartketcrollView()
                 .padding([.top], 5)

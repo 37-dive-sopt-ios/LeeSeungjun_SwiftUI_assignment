@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CategoryTabView: View {
     
-    @State var selectedIndex: Int = 0
+    @Binding var selectedIndex: Int
     // 1. 애니메이션 네임스페이스 선언
     @Namespace private var animationNamespace
     

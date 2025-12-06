@@ -15,7 +15,7 @@ struct BannerScrollView: View {
                     Image(uiImage: data.image)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: UIScreen.main.bounds.width)
+                        .containerRelativeFrame(.horizontal)
                         .frame(height: 114)
                 }
             }

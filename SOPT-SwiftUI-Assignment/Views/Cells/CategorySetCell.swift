@@ -59,9 +59,7 @@ struct CategorySetCell: View {
             Rectangle()
                 .foregroundStyle(.white)
                 .frame(height: 2)
-                .frame(width: UIScreen.main.bounds.width)
         }
         .background(.white)
-        .frame(width: UIScreen.main.bounds.width)
     }
 }
