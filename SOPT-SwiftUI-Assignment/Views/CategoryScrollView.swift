@@ -20,7 +20,6 @@ struct CategoryScrollView: View {
                         .id(index)
                 }
             }
-            // 5. LazyHStack이 스크롤 타겟임을 명시
             .scrollTargetLayout()
         }
         .scrollIndicators(.hidden)
@@ -28,7 +27,6 @@ struct CategoryScrollView: View {
         .scrollPosition(id: Binding(
             get: { selectedIndex },
             set: { newValue in
-                // 스크롤이 멈춰서 값이 업데이트될 때만 반영
                 if let newValue = newValue {
                     withAnimation(.easeInOut(duration: 0.3)) {
                         selectedIndex = newValue
