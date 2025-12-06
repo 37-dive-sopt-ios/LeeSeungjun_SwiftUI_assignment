@@ -17,18 +17,18 @@ struct TabCell: View {
     
     var body: some View {
         Text(name)
-            .font(Font.pretendard(.bold_18))
-            .foregroundColor(selectedIndex == index ? .baeminBlack : .baeminGray300)
-            .frame(height: 40)
-            .background(alignment: .bottom) {
-                if selectedIndex == index {
-                    Rectangle()
-                        .fill(Color.baeminBlack)
-                        .frame(height: 8)
-                        .offset(y: 8)
-                        .matchedGeometryEffect(id: "underbar", in: namespace)
-                }
+        .font(Font.pretendard(.bold_18))
+        .foregroundColor(selectedIndex == index ? .baeminBlack : .baeminGray300)
+        .frame(height: 40)
+        .background(alignment: .bottom) {
+            if selectedIndex == index {
+                Rectangle()
+                .fill(Color.baeminBlack)
+                .frame(height: 8)
+                .offset(y: 8)
+                .matchedGeometryEffect(id: "underbar", in: namespace)
             }
-            .padding([.horizontal], 7)
+        }
+        .padding([.horizontal], 7)
     }
 }

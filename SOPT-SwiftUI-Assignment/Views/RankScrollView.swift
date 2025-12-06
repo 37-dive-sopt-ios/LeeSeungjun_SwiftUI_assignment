@@ -16,7 +16,7 @@ struct RankScrollView: View {
                         gradient: Gradient(colors: [Color(.baeminBlue500), Color(.white)]),
                         startPoint: .top,
                         endPoint: .bottom))
-                .frame(width: .infinity, height: 100)
+                .frame(height: 100)
             VStack {
                 HStack {
                     Text("우리 동네 한그릇 인기 랭킹")

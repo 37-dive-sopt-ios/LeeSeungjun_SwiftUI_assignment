@@ -25,8 +25,7 @@ struct CategoryTabView: View {
                             selectedIndex: $selectedIndex,
                             index: index,
                             name: data.name,
-                            namespace: animationNamespace
-                        )
+                            namespace: animationNamespace)
                     }
                 }
             }

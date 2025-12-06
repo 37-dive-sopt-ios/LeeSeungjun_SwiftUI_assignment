@@ -21,7 +21,11 @@ struct MartketcrollView: View {
             }
             .padding([.horizontal], 16)
         }
-        .padding([.vertical], 11)
+        .frame(height: 100)
         .background(Color(.white))
     }
+}
+
+#Preview {
+    ContentView()
 }

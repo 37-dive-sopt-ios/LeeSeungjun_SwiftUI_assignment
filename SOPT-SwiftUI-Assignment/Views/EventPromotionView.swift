@@ -13,12 +13,14 @@ struct EventPromotionView: View {
             Rectangle()
                 .foregroundStyle(
                     LinearGradient(
-                        gradient: Gradient(colors: [Color(.baeminBackgroundWhite), Color(.baeminMint100)]),
+                        gradient: Gradient(colors: [
+                            Color(.baeminBackgroundWhite),
+                            Color(.baeminMint100)]),
                         startPoint: .top,
                         endPoint: .bottom
                     )
                 )
-            .frame(width: .infinity, height: 100)
+            .frame(height: 100)
             HStack {
                 VStack(alignment: .leading) {
                     Image(.bmart)
