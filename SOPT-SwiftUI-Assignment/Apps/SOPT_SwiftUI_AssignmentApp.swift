@@ -11,7 +11,7 @@ import SwiftUI
 struct SOPT_SwiftUI_AssignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }
