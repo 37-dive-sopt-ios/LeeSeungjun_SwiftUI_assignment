@@ -46,7 +46,7 @@ struct WelcomeView: View {
             
             BaeminButton(
                 isAvailable: true,
-                title: "뒤로가기",
+                title: "메인으로 가기",
                 action : {
                     dismiss()
                 }

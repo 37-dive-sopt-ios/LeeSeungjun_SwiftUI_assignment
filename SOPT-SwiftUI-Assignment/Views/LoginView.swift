@@ -11,10 +11,9 @@ struct LoginView: View {
     
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var path = NavigationPath()
     
     @FocusState private var focusedField: LoginField?
-    
-    @State private var path = NavigationPath()
     
     var body: some View {
         NavigationStack(path: $path) {

@@ -46,7 +46,7 @@ struct CategorySetCell: View {
                 
             } label: {
                 HStack(spacing: 0) {
-                    Text("음식배달")
+                    Text("\(data.name)")
                         .font(Font.pretendard(.body_b_14))
                     Text("에서 더보기")
                         .font(Font.pretendard(.body_m_14))
