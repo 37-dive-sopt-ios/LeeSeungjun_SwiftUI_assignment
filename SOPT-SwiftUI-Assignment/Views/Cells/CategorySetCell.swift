@@ -18,26 +18,20 @@ struct CategorySetCell: View {
                 horizontalSpacing: 12,
                 verticalSpacing: 12,
             ) {
-                GridRow {
-                    ForEach([
-                        CategoryCellData(image: .oneBowl, name: "한그릇"),
-                        CategoryCellData(image: .chicken, name: "치킨"),
-                        CategoryCellData(image: .cafeDesert, name: "카페·디저트"),
-                        CategoryCellData(image: .pizza, name: "피자"),
-                        CategoryCellData(image: .snackFood, name: "분식")]) { data in
-                            CategoryCell(data: data)
-                        }
+            GridRow {
+                ForEach(
+                    [data.cells[0], data.cells[2], data.cells[4], data.cells[6], data.cells[8]])
+                { data in
+                    CategoryCell(data: data)
                 }
-                GridRow {
-                    ForEach([
-                        CategoryCellData(image: .meat, name: "고기"),
-                        CategoryCellData(image: .soup, name: "찜·탕"),
-                        CategoryCellData(image: .lateFood, name: "야식"),
-                        CategoryCellData(image: .fastfood, name: "패스트푸드"),
-                        CategoryCellData(image: .pickUp, name: "픽업")]) { data in
-                            CategoryCell(data: data)
-                        }
+            }
+            GridRow {
+                ForEach(
+                    [data.cells[1], data.cells[3], data.cells[5], data.cells[7], data.cells[9]])
+                { data in
+                    CategoryCell(data: data)
                 }
+            }
             }
             .padding([.vertical], 10)
             .padding([.horizontal], 16)
@@ -62,4 +56,8 @@ struct CategorySetCell: View {
         }
         .background(.white)
     }
+}
+
+#Preview {
+    ContentView()
 }
