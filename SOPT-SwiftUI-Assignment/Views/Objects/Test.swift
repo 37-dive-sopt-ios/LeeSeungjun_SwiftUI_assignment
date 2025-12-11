@@ -12,9 +12,7 @@ class CounterModel: ObservableObject {
     @Published var count: Int = 0
     let id = UUID()
     
-    init() {
-        print("CounterModel 생성됨! (ID: \(id.uuidString.prefix(5)))")
-    }
+    init() { }
 }
 
 struct RootView: View {
